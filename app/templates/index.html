@@ -59,6 +59,7 @@
             <div class="card-body">
               <h5 class="card-title">{{ job.name }}</h5>
               <p class="card-text">Company: {{ job.company }}</p>
+              <p class="card-text">Modality: {{ job.modality }}</p>
               <p class="card-text">
                 Application Date: {{ job.applicationDate }}
               </p>
@@ -66,10 +67,10 @@
             </div>
             <div class="row d-flex mx-4">
               <a
-                class="btn btn-success mb-2"
-                href="{{url_for('jobs.update_job')}}"
+                class="btn btn-primary mb-2"
+                href="{{url_for('jobs.update_job', id=job.id)}}"
                 role="button"
-                >Update</a
+                >Edit</a
               >
               <button
                 class="btn btn-danger"
