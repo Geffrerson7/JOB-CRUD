@@ -12,7 +12,7 @@ services:
 
   web:
     build: .
-    command: flask db upgrade && flask run --host=0.0.0.0
+    command: flask db init && flask db migrate && flask db upgrade && flask run --host=0.0.0.0
     ports:
       - "5000:5000"
     volumes:
