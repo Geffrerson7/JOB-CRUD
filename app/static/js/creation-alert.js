@@ -15,7 +15,7 @@ function createJob(event) {
           icon: "success",
         }).then((result) => {
           if (result.isConfirmed) {
-            window.location.reload();
+            window.location.href = "/";
           }
         });
       } else {

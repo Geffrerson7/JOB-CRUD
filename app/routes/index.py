@@ -11,21 +11,25 @@ def index():
     return render_template("index.html", jobs=jobs)
 
 
-@jobs_router.route("/new-job", methods=["POST"])
+@jobs_router.route("/new-job", methods=["GET", "POST"])
 def create_job():
-    name = request.form["name"]
-    url = request.form["url"]
-    company = request.form["company"]
-    web_portal = request.form["web_portal"]
-    modality = request.form["modality"]
-    publicationDate = request.form["publicationDate"]
+    if request.method == "GET":
+        return render_template("create.html")
+    
+    elif request.method == "POST":
+        name = request.form["name"]
+        url = request.form["url"]
+        company = request.form["company"]
+        web_portal = request.form["web_portal"]
+        modality = request.form["modality"]
+        publicationDate = request.form["publicationDate"]
 
-    new_job = Job(name, url, company, web_portal, modality, publicationDate)
+        new_job = Job(name, url, company, web_portal, modality, publicationDate)
 
-    db.session.add(new_job)
-    db.session.commit()
+        db.session.add(new_job)
+        db.session.commit()
 
-    return redirect(url_for("jobs.index")), 201
+        return redirect(url_for("jobs.index")), 201
 
 
 @jobs_router.route("/update-job/<id>", methods=["GET", "PUT"])
