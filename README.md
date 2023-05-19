@@ -42,6 +42,20 @@ Create the following environment variables in the .env file
 
 `SQLALCHEMY_DATABASE_URI`
 
+Execute the migrations:
+
+```sh
+(env)$ flask db init
+```
+
+```sh
+(env)$ flask db migrate
+```
+
+```sh
+(env)$ flask db upgrade
+```
+
 You can now run the development server:
 ```sh
 (env)$ flask run
